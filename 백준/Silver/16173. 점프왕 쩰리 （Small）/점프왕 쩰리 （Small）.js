@@ -32,8 +32,8 @@ function bfs(map, width) {
   const queue = new Queue();
   let answer = "Hing";
 
-  const dr = [1, 0]; // 오른쪽
-  const dc = [0, 1]; // 아래
+  const dx = [1, 0];
+  const dy = [0, 1];
 
   const visitedNode = Array.from({ length: width }, () =>
     new Array(width).fill(false)
@@ -42,9 +42,9 @@ function bfs(map, width) {
   queue.enqueue([0, 0]);
 
   while (queue.size() > 0) {
-    const [currentR, currentC] = queue.dequeue();
-    visitedNode[currentR][currentC] = true;
-    const currentDist = map[currentR][currentC];
+    const [currentX, currentY] = queue.dequeue();
+    visitedNode[currentX][currentY] = true;
+    const currentDist = map[currentX][currentY]; // dist = 거리
 
     if (currentDist === -1) {
       answer = "HaruHaru";
@@ -52,18 +52,18 @@ function bfs(map, width) {
     }
 
     for (let i = 0; i < 2; i++) {
-      const nextR = currentR + dr[i] * currentDist;
-      const nextC = currentC + dc[i] * currentDist;
+      const nextX = currentX + dx[i] * currentDist;
+      const nextY = currentY + dy[i] * currentDist;
 
       if (
-        nextR >= width ||
-        nextC >= width ||
-        visitedNode[nextR][nextC] === true
+        nextX >= width ||
+        nextY >= width ||
+        visitedNode[nextX][nextY] === true
       ) {
         continue;
       }
 
-      queue.enqueue([nextR, nextC]);
+      queue.enqueue([nextX, nextY]);
     }
   }
   console.log(answer);
