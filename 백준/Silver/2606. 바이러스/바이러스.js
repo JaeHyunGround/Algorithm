@@ -2,30 +2,30 @@ const fs = require("fs");
 const filePath = process.platform === "linux" ? "/dev/stdin" : "BOJ/input.txt";
 let input = fs.readFileSync(filePath).toString().trim().split("\n");
 
-// bfs를 사용하면 될듯
+const com = +input.shift(); // 컴퓨터 갯수
+const cases = +input.shift();
 
-const N = +input.shift();
-const M = +input.shift();
-
-const graph = [...Array(N + 1)].map(() => []);
+const graph = Array.from({ length: com + 1 }, () => new Array());
 const edges = input.map((line) => line.split(" ").map(Number));
 edges.forEach(([from, to]) => {
   graph[from].push(to);
   graph[to].push(from);
 });
 
-const dfs = (startNode) => {
-  const queue = [startNode];
-  const visitedNodes = [];
-  while (queue.length) {
-    const node = queue.pop();
-    if (!visitedNodes.includes(node)) {
-      visitedNodes.push(node);
-      queue.push(...graph[node]);
+function dfs(start) {
+  const stack = [];
+  const visited = [];
+  stack.push(start);
+
+  while (stack.length > 0) {
+    const node = stack.pop();
+    if (!visited.includes(node)) {
+      visited.push(node);
+      stack.push(...graph[node]);
     }
   }
 
-  return visitedNodes;
-};
+  return visited.length - 1;
+}
 
-console.log(dfs(1).length - 1);
+console.log(dfs(1));
