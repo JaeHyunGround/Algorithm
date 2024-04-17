@@ -24,6 +24,7 @@ function BinarySearch(arr, target) {
 
 const testCase = +input.shift();
 let answer = [];
+
 for (let i = 0; i < testCase; i++) {
   let [N, NArr, M, MArr] = input.splice(0, 4);
   let sortNArr = NArr.split(" ")
