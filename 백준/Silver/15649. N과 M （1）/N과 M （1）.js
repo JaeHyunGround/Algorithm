@@ -7,11 +7,11 @@ const M = +input.shift();
 
 const visited = new Array(N + 1);
 let output = [];
-let result = "";
+let answer = "";
 
 function dfs(cnt) {
   if (cnt === M) {
-    result += `${output.join(" ")}\n`;
+    answer += `${output.join(" ")}\n`;
     return;
   }
 
@@ -26,4 +26,4 @@ function dfs(cnt) {
 }
 
 dfs(0);
-console.log(result.trim());
+console.log(answer.trim());
