@@ -3,7 +3,7 @@ function solution(array, commands) {
     
     commands.forEach((cases) => {
         const [i, j, k] = cases
-        let newArray = array.slice(i - 1, j).map(Number).sort((a, b) => a - b)
+        let newArray = array.slice(i - 1, j).sort((a, b) => a - b)
         
         answer.push(newArray[k - 1])
     })
