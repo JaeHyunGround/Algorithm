@@ -4,7 +4,7 @@
 
 ### 성능 요약
 
-메모리: 22024 KB, 시간: 1156 ms
+메모리: 21244 KB, 시간: 940 ms
 
 ### 분류
 
@@ -12,11 +12,11 @@
 
 ### 제출 일자
 
-2024년 5월 7일 14:43:06
+2024년 5월 7일 14:56:32
 
 ### 문제 설명
 
-<p><img alt="" src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/upload/images/turtle2(1).png" style="float:right; height:139px; width:183px">상근이는 2차원 평면 위에서 움직일 수 있는 거북이 로봇을 하나 가지고 있다. 거북이 로봇에게 내릴 수 있는 명령은 다음과 같이 네가지가 있다.</p>
+<p><img alt="" src="" style="float:right; height:139px; width:183px">상근이는 2차원 평면 위에서 움직일 수 있는 거북이 로봇을 하나 가지고 있다. 거북이 로봇에게 내릴 수 있는 명령은 다음과 같이 네가지가 있다.</p>
 
 <ol>
 	<li>F: 한 눈금 앞으로</li>
@@ -31,7 +31,7 @@
 
 <p>아래 그림에서 거북이는 가장 처음에 (0, 0)에 있고, 북쪽을 쳐다보고 있다. 컨트롤 프로그램이 FLFRFLBRBLB인 경우에 거북이는 아래와 같이 움직인다. 회색으로 빗금친 부분이 거북이가 지나간 영역을 모두 포함할 수 있는 가장 작은 직사각형이다. 넓이는 4가 된다.</p>
 
-<p style="text-align: center;"><img alt="" src="https://onlinejudgeimages.s3-ap-northeast-1.amazonaws.com/upload/images/turtle.png" style="height:294px; width:304px"></p>
+<p style="text-align: center;"><img alt="" src="" style="height:294px; width:304px"></p>
 
 <p>거북이가 지나간 영역이 직사각형을 만들지 않는 경우도 있다. 예를 들어, FFLLFF인 경우에 거북이는 y축의 위로만 지나다닌다. 이 경우에 거북이가 지나간 영역을 모두 포함하는 직사각형은 선분이고, 선분은 한 변이 0인 직사각형으로 생각할 수 있다. 따라서, 선분의 경우에 넓이는 0이 된다.</p>
 
