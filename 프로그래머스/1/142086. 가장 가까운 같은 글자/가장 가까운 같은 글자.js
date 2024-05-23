@@ -11,6 +11,7 @@ function solution(s) {
         } else {
             answer.push(i - myMap.get(input[i]))
         }
+        
         myMap.set(word, i)
     }
     
