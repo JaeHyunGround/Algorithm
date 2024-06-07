@@ -7,7 +7,6 @@ const cardCost = input[0].split(" ").map(Number);
 cardCost.unshift(0);
 
 const dp = new Array(N + 1);
-
 dp[1] = cardCost[1];
 dp[2] = Math.max(cardCost[1] + cardCost[1], cardCost[2]);
 
