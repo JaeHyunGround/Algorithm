@@ -1,61 +1,65 @@
-const fs = require('fs');
-const filePath = process.platform === 'linux' ? '/dev/stdin' : './input.txt';
+const fs = require("fs");
+const filePath = process.platform === "linux" ? "/dev/stdin" : "BOJ/input.txt";
 const [info, ...input] = fs
-    .readFileSync(filePath)
-    .toString()
-    .trim()
-    .split('\n')
-    .map((item) => item.split(' ').map((value) => +value));
+  .readFileSync(filePath)
+  .toString()
+  .trim()
+  .split("\n")
+  .map((line) => line.split(" ").map((value) => +value));
 
 const [N, M] = info;
 
 const solution = () => {
-    // 컴퓨터의 신뢰하는 관계가 주어졌을 때, 그 관계 정보를 나타내는 2차원 배열 ( 인접리스트 )
-    const graph = Array.from({ length: N + 1 }, () => []);
+  const graph = Array.from({ length: N + 1 }, () => []);
 
-    for (let i = 0; i < M; i++) {
-        const [a, b] = input[i];
+  for (let i = 0; i < M; i++) {
+    const [A, B] = input[i];
+    graph[B].push(A);
+  }
 
-        // a가 b를 신뢰하므로 b가 해킹되면 a도 해킹된다. ( = b가 탐색되면 a도 탐색되어야 한다. )
-        graph[b].push(a);
+  let answer = [];
+  let max = 0;
+
+  const dfs = (start) => {
+    let stack = [start];
+    let visited = Array.from({ length: N + 1 }, () => false);
+    let count = 1;
+
+    visited[start] = true;
+
+    while (stack.length) {
+      const node = stack.pop();
+      for (let i = 0; i < graph[node].length; i++) {
+        if (!visited[graph[node][i]]) {
+          count += 1;
+          visited[graph[node][i]] = true;
+          stack.push(graph[node][i]);
+        }
+      }
+
+      // for 구문 대신 아래 로직을 사용하면 시간 초과 남.
+      //   if (!visited[node]) {
+      //     visited[node] = true;
+      //     count += 1;
+      //     stack.push(...graph[node]);
+      //   }
     }
 
-    let max = 0; // 최대 해킹 컴퓨터 수
-    let answer = [];
-
-    const DFS = (n) => {
-        // check: 해킹 여부를 나타내는 배열
-        let check = Array.from({ length: N + 1 }, () => 0);
-        let count = 1; // 해킹된 컴퓨터 수
-        let stack = [n]; // DFS 탐색 스택
-
-        check[n] = 1;
-
-        // DFS를 탐색하면서 check배열의 값이 0인 노드에 한해서 count를 증가시키면서 stack에 push ( DFS 탐색 )
-        while (stack.length) {
-            const value = stack.pop();
-            for (let i = 0; i < graph[value].length; i++) {
-                if (!check[graph[value][i]]) {
-                    count += 1;
-                    check[graph[value][i]] = 1;
-                    stack.push(graph[value][i]);
-                }
-            }
-        }
-
-        if (max > count) return;
-        else if (max === count) answer.push(n);
-        else {
-            max = count;
-            answer = [n];
-        }
-    };
-
-    for (let i = 1; i <= N; i++) {
-        DFS(i);
+    if (count < max) {
+      return;
+    } else if (count === max) {
+      answer.push(start);
+    } else {
+      max = count;
+      answer = [start];
     }
+  };
 
-    return answer.join(' ');
+  for (let i = 1; i <= N; i++) {
+    dfs(i);
+  }
+
+  return answer.join(" ");
 };
 
 console.log(solution());
