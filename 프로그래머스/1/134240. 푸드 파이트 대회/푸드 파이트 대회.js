@@ -10,8 +10,7 @@ function solution(food) {
         }
     }
     
-    answer.push(0)
-    let copyAnswer = answer.slice(0, answer.length - 1).reverse()
+    let copyAnswer = [...answer].reverse()
     
-    return `${answer.join("")}${copyAnswer.join("")}`;
+    return `${answer.join("")}0${copyAnswer.join("")}`;
 }
