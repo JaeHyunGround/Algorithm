@@ -4,13 +4,16 @@ let input = fs.readFileSync(filePath).toString().trim().split("\n");
 
 const N = +input.shift();
 const M = +input.pop();
-const costArr = input[0].split(" ").map(Number);
+const costArr = input[0]
+  .split(" ")
+  .map(Number)
+  .sort((a, b) => a - b);
 
 function binarySearch(input, N, M) {
-  input.sort((a, b) => a - b);
   let left = 1;
   let right = input[N - 1];
   let mid = Math.floor((right + left) / 2);
+
   let newCostArr = [];
   let totalCost = 0;
 
@@ -26,7 +29,7 @@ function binarySearch(input, N, M) {
     mid = Math.floor((right + left) / 2);
   }
 
-  return Math.max(right);
+  return mid;
 }
 
 console.log(binarySearch(costArr, N, M));
