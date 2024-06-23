@@ -18,7 +18,7 @@ const binarySearch = (array) => {
     });
 
     if (count >= M) {
-      answer = answer < mid ? answer : mid;
+      answer = mid;
       right = mid - 1n;
     } else {
       left = mid + 1n;
