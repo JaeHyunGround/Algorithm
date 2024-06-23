@@ -9,6 +9,7 @@ function binarySearch(array) {
   let left = 1;
   let right = Math.max(...array);
   let mid = Math.floor((right + left) / 2);
+  let answer = right;
 
   while (left <= right) {
     let pieces = array
@@ -16,6 +17,7 @@ function binarySearch(array) {
       .reduce((acc, cur) => acc + cur, 0);
 
     if (pieces >= N) {
+      answer = mid;
       left = mid + 1;
     } else {
       right = mid - 1;
@@ -24,7 +26,7 @@ function binarySearch(array) {
     mid = Math.floor((right + left) / 2);
   }
 
-  return mid;
+  return answer;
 }
 
 console.log(binarySearch(array));
