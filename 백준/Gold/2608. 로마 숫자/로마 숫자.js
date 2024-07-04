@@ -34,7 +34,6 @@ const objects = {
 let answer = 0;
 input.forEach((s) => {
   let sArr = s.split("");
-
   for (let i = 0; i < sArr.length; i++) {
     if (objects[sArr[i]] < objects[sArr[i + 1]]) {
       answer += objects[sArr.slice(i, i + 2).join("")];
@@ -44,8 +43,8 @@ input.forEach((s) => {
     }
   }
 });
-
 console.log(answer);
+
 let stringResult = "";
 while (answer > 0) {
   if (answer >= 1000) {
