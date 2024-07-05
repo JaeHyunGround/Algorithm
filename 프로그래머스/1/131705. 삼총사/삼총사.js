@@ -18,6 +18,6 @@ function solution(number) {
             visited[i] = false
         }
     }
-    dfs(-1, 0, 0)
+    dfs(0, 0, 0)
     return answer
 }
