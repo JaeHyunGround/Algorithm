@@ -5,14 +5,10 @@ function solution(answers) {
     const arr = [[1, 2, 3, 4, 5], [2, 1, 2, 3, 2, 4, 2, 5], [3, 3, 1, 1, 2, 2, 4, 4, 5, 5]]
     arr.forEach((line) => {
         let count = 0
-        let idx = 0;
-        for (let i = 0; i < answers.length; i++) {
-            if (idx >= line.length) idx = 0;
-            
-            if (answers[i] === line[idx]) {
+        for (let i = 0; i < answers.length; i++) {          
+            if (answers[i] === line[i % line.length]) {
                 count += 1;
             }
-            idx++;
         }
         result.push(count)
     })
