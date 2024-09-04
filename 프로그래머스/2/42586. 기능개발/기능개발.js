@@ -2,20 +2,19 @@ function solution(progresses, speeds) {
     const answer = [];
     
     while (progresses.length > 0) {
-        let count = 0;
-        for (let i = 0; i < progresses.length; i++) {
-            progresses[i] = progresses[i] + speeds[i]
+        if (progresses[0] >= 100) {
+            let countArr = [];
+            while (progresses[0] >= 100) {
+                countArr.push(progresses.shift())
+                speeds.shift();
+            }
+            answer.push(countArr.length)
         }
-        while (progresses[0] >= 100) {
-            progresses.shift();
-            speeds.shift();
-            count += 1
-        }
-        if (count > 0) {
-            answer.push(count)
+        
+        for (let j = 0; j < progresses.length; j++) {
+            progresses[j] = progresses[j] + speeds[j]
         }
     }
-    
     
     return answer;
 }
