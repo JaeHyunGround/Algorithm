@@ -1,16 +1,18 @@
 function solution(participant, completion) {
-    let myMap = new Map();
-    participant.forEach((people) => {
-        if (!myMap.get(people)) myMap.set(people, 1) 
-        else myMap.set(people, myMap.get(people) + 1)
-    })
-    completion.forEach((people) => {
-        if (myMap.get(people)) myMap.set(people, myMap.get(people) - 1)
-    })
+    let answer = '';
+    let map = new Map();
     
-    let failIndex = [...myMap.values()].indexOf(1)
-    let answer = [...myMap.keys()][failIndex]
+    for (const p of participant) {
+        if (map.has(p)) map.set(p, map.get(p) + 1)
+        else map.set(p, 1)
+    }
     
-    return answer;
+    for (const c of completion) {
+        map.set(c, map.get(c) - 1)
+    }
     
+    const mapArr = map.entries()
+    answer = [...mapArr].filter(([name, num]) => num !== 0)
+    
+    return answer[0][0];
 }
