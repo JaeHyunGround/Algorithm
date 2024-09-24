@@ -1,6 +1,6 @@
 function solution(want, number, discount) {
     let answer = 0;
-    
+
     for (let j = 0; j <= discount.length - 10; j++) {
         let compaerNumber = [...number]
         let count = 0;
@@ -14,9 +14,6 @@ function solution(want, number, discount) {
         }
         if (count >= 10) answer += 1
     }
-    
-    
-    
     
     return answer;
 }
