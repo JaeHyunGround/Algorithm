@@ -1,11 +1,10 @@
 function solution(array, commands) {
-    const answer = [];
+    const answer = []
     
     commands.forEach((cases) => {
         const [i, j, k] = cases
-        let newArray = array.slice(i - 1, j).sort((a, b) => a - b)
-        
-        answer.push(newArray[k - 1])
+        const result = array.slice(i - 1, j).sort((a, b) => a - b)[k - 1]
+        answer.push(result)
     })
     
     return answer;
