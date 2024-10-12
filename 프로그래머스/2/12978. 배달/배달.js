@@ -1,14 +1,13 @@
 function solution(N, road, K) {
-    let graph = Array.from({length: N + 1}, () => [])
-    let distance = Array.from({length: N + 1}, () => Infinity)
-    let queue = [];
+    const graph = Array.from({length: N + 1}, () => [])
+    const distance = Array(N + 1).fill(Infinity)
+    const queue = [[1, 0]];
     
-    for (let [a, b ,c] of road) {
-        graph[a].push([b, c])
+    for (const [a, b, c] of road) {
+        graph[a].push([b, c]) // b = to c = cost
         graph[b].push([a, c])
     }
     
-    queue.push([1, 0])
     distance[1] = 0
     
     while (queue.length) {
@@ -17,13 +16,15 @@ function solution(N, road, K) {
             const next = graph[point][i][0]
             const nextcost = graph[point][i][1]
             
-            if (distance[next] > distance[point] + nextcost) {
-                distance[next] = distance[point] + nextcost;
-                queue.push([next, nextcost])
+            if (distance[next] > cost + nextcost) {
+                distance[next] = cost + nextcost
+                queue.push([next, cost + nextcost])
             }
         }
     }
     
-    const answer = distance.filter(v => v <= K)
-    return answer.length
+    const answer = distance.filter((v) => v <= K).length
+    return answer
 }
+
+// 다익스트라 => 우선순위 큐로 풀기 => 최단경로 (비비큐)
