@@ -1,6 +1,7 @@
 const solution = (phone_number) => {
     const lastFourNumber = phone_number.slice(phone_number.length - 4)
-    const star = Array.from({length: phone_number.length - lastFourNumber.length}, () => '*').join("")
+    // const star = Array.from({length: phone_number.length - lastFourNumber.length}, () => '*').join("")
+    const star = '*'.repeat(phone_number.length - 4)
     
     
     return star + lastFourNumber
