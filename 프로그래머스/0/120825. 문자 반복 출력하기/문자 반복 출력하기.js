@@ -1,10 +1,4 @@
 function solution(my_string, n) {
-    const answer = []
-    my_string.split("").forEach(word => {
-        for (let i = 0; i < n; i++) {
-            answer.push(word)
-        }
-    })
-    
-    return answer.join("");
+    const answer = my_string.split("").map(word => word.repeat(n))
+    return answer.join('')
 }
