@@ -4,7 +4,7 @@ def solution(hp):
     attack = [5, 3, 1]
     for i in attack:
         answer += hp // i
-        hp -= (i * (hp // i))
+        hp = hp % i
     
     return answer
 
