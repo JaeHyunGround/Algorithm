@@ -5,6 +5,6 @@ def solution(s):
     while s != '1':
         count_t += 1
         count_z += s.count('0')
-        s = bin(s.count('1'))[2:]
+        s = bin(s.count('1'))[2:] # 0bxxx...
         
     return [count_t, count_z]
