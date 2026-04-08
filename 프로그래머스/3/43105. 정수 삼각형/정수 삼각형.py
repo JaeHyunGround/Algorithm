@@ -1,5 +1,3 @@
-import math
-
 def solution(triangle):
     dp = [[] for _ in range(len(triangle))]
     for i in range(len(triangle)):
