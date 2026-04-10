@@ -9,6 +9,7 @@ for i in range(N):
 min = 1e9
 
 # ---
+
 for combination in combinations(list(range(N)), N // 2):
     team_a = combination
     team_b = []
@@ -28,7 +29,9 @@ for combination in combinations(list(range(N)), N // 2):
             power_b += S[x][y]
 
     diff = abs(power_a - power_b)
+
     if min > diff:
         min = diff
+
 
 print(min)
